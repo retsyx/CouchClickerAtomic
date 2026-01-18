@@ -1,0 +1,11 @@
+.DS_Store
+.vscode
+.zmk
+bin/
+lib/
+config.yaml*
+pyvenv.cfg
+\#auto_saved_files\#
+fp-info-cache
+*_pcb.lck
+*_sch.lck
