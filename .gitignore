@@ -9,3 +9,5 @@ pyvenv.cfg
 fp-info-cache
 *_pcb.lck
 *_sch.lck
+
+.zmk/

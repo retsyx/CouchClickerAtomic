@@ -1,0 +1,6 @@
+if SHIELD_CCA
+
+config ZMK_KEYBOARD_NAME
+    default "Couch Clicker"
+
+endif # SHIELD_CCA
