@@ -6,12 +6,39 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        // Use a macro because can't place <&bt BT_CLR> directly in hold-tap
+        ZMK_MACRO(bt_clr, bindings = <&bt BT_CLR>;)
+
+        // Unpair/unbind BLE with a 6 second hold of the combo that triggers this operation
+        unbind_bt: unbind_bt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <6000>;
+            flavor = "tap-preferred";
+            bindings = <&bt_clr>, <&none>;
+        };
+        // Reset the firmware with a 6 second hold of the combo that triggers this operation
+        mreset: mreset {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <6000>;
+            flavor = "tap-preferred";
+            bindings = <&sys_reset>, <&none>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
         combo_unpair {
             timeout-ms = <50>;
-            key-positions = <0 12 14>;
-            bindings = <&bt BT_CLR>;
+            key-positions = <0 14>;
+            bindings = <&unbind_bt 0 0>;
+        };
+        combo_reset {
+            timeout-ms = <50>;
+            key-positions = <0 12>;
+            bindings = <&mreset 0 0>;
         };
     };
 

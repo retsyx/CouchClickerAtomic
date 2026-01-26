@@ -9,3 +9,4 @@
 include:
   - board: seeeduino_xiao_ble
     shield: cca
+#    snippet: zmk-usb-logging
